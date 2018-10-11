@@ -1,0 +1,55 @@
+.Listing {
+  width: 50%;
+  margin: 50px auto;
+  display: flex;
+}
+
+.Subject ul {
+  border: 1px solid #ddd;
+}
+
+.Subject + .Subject ul {
+  border-left: none;
+}
+
+.Subject li {
+  padding: 10px;
+}
+
+.Subject li + li {
+  border-top: 1px solid #ddd;
+}
+
+
+.Table li + li {
+  border-left: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+ul li {
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #5189de;
+}
+
+.Table li {
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.Table {
+  width: 600px;
+  margin: 0 auto;
+}
