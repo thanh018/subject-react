@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 class Table extends Component {
   render() {
     return (
-      <div className="Table">
-        {this.props.children}
-      </div>
+      <table border="1" className="Table">
+        <tbody>{this.props.children}</tbody>
+
+      </table>
     );
   }
 }

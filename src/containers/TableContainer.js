@@ -3,12 +3,11 @@ import Table from './../components/Table';
 import TableItem from './../components/TableItem';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import { actDeleteTable, actUpdateTable, actMessage } from '../actions';
 
 class TableContainer extends Component {
   render() {
     var {table} = this.props;
-    console.log(table);
-
     return (
       <Table>
         {this.showTable(table)}
@@ -17,6 +16,7 @@ class TableContainer extends Component {
   }
 
   showTable = (table) => {
+    var { onDeleteTable, onUpdateTable, onChangeMessage } = this.props;
     var result = null;
     if(table.length > 0) {
       result = table.map((item, index) => {
@@ -25,6 +25,9 @@ class TableContainer extends Component {
             key = {index}
             index = {index}
             item = {item}
+            onDeleteTablePar = {onDeleteTable}
+            onUpdateTablePar = {onUpdateTable}
+            onChangeMessagePar = {onChangeMessage}
           />
         );
       })
@@ -40,11 +43,14 @@ TableContainer.propTypes = {
         id: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
         branch: PropTypes.string.isRequired,
-        reservation: PropTypes.number.isRequired
+        price: PropTypes.number.isRequired
       }).isRequired,
       quantity: PropTypes.number.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  onDeleteTable: PropTypes.func.isRequired,
+  onUpdateTable: PropTypes.func.isRequired,
+  onChangeMessage: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {
@@ -53,9 +59,17 @@ const mapStateToProps = state => {
   }
 }
 
-// const mapDispatchToProps = (dispatch, props) => {
-//   return {
-
-//   }
-// }
-export default connect(mapStateToProps, null)(TableContainer);
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    onDeleteTable: (subject) => {
+      dispatch(actDeleteTable(subject));
+    },
+    onUpdateTable: (subject, quantity) => {
+      dispatch(actUpdateTable(subject, quantity));
+    },
+    onChangeMessage: (message) => {
+      dispatch(actMessage(message));
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(TableContainer);

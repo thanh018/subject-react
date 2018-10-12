@@ -9,7 +9,6 @@ const table = (state = initialState, action) => {
   switch(action.type) {
     case Types.ADD_TABLE:
       index = isExist(state, subject);
-
       if(index === -1) {
         state.push({
           subject, quantity
@@ -18,9 +17,23 @@ const table = (state = initialState, action) => {
       else {
         state[index].quantity += quantity;
       }
-
       localStorage.setItem('table', JSON.stringify(state));
-      return state;
+      return [...state];
+    case Types.DELETE_TABLE:
+      index = isExist(state, subject);
+      if(index !== -1) {
+        state.splice(index, 1);
+      }
+      localStorage.setItem('table', JSON.stringify(state));
+      return [...state];
+
+    case Types.UPDATE_TABLE:
+      index = isExist(state, subject);
+      if(index !== -1 && quantity >= 0) {
+        state[index].quantity = quantity;
+      }
+      localStorage.setItem('table', JSON.stringify(state));
+      return [...state];
 
     default: return [...state];
   }

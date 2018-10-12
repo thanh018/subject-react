@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 class Listing extends Component {
   render() {
     return (
-      <div className="Listing">
+      <ul className="Listing">
         {this.props.children}
-      </div>
+      </ul>
     );
   }
 }

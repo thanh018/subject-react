@@ -7,3 +7,25 @@ export const actAddToTable = (subject, quantity) => {
     quantity
   }
 }
+
+export const actDeleteTable = (subject) => {
+  return {
+    type: Types.DELETE_TABLE,
+    subject
+  }
+}
+
+export const actUpdateTable = (subject, quantity) => {
+  return {
+    type: Types.UPDATE_TABLE,
+    subject,
+    quantity
+  }
+}
+
+export const actMessage = (message) => {
+  return {
+    type: Types.CHANGE_MESSAGE,
+    message
+  }
+}
