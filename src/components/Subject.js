@@ -22,6 +22,11 @@ class Subject extends Component {
             >
               Add
             </a>
+            <span
+              onClick = { () => this.onTestBtn(subject) }
+            >
+              xxxxx
+            </span>
           </div>
         </div>
       </li>
@@ -33,6 +38,9 @@ class Subject extends Component {
     this.props.onChangeMessagePar(Types.ADD_SUBJECT);
   }
 
+  onTestBtn = (subject) => {
+    this.props.onTest(subject)
+  }
 }
 
 export default Subject;

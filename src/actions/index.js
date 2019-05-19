@@ -8,10 +8,24 @@ export const actAddToTable = (subject, quantity) => {
   }
 }
 
+export const actTest = (subject) => {
+  return {
+    type: Types.TEST,
+    subject
+  }
+}
+
 export const actDeleteTable = (subject) => {
   return {
     type: Types.DELETE_TABLE,
     subject
+  }
+}
+
+export const actDeleteBlog = (blog) => {
+  return {
+    type: Types.DELETE_BLOG,
+    blog
   }
 }
 

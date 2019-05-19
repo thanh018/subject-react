@@ -3,7 +3,7 @@ import Listing from './../components/Listing';
 import Subject from './../components/Subject';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { actAddToTable, actMessage } from '../actions';
+import { actAddToTable, actMessage, actTest } from '../actions';
 
 class ListingContainer extends Component {
   render() {
@@ -16,7 +16,7 @@ class ListingContainer extends Component {
   }
 
   showListing(listing) {
-    var { onAddToTable, onChangeMessage } = this.props;
+    var { onAddToTable, onChangeMessage, onTest } = this.props;
     var result = null;
     if(listing.length > 0) {
       result = listing.map((item, index) => {
@@ -25,6 +25,7 @@ class ListingContainer extends Component {
           subject = {item}
           onAddToTablePar = {onAddToTable}
           onChangeMessagePar = {onChangeMessage}
+          onTest = {onTest}
         />
       });
     }
@@ -42,7 +43,8 @@ ListingContainer.propTypes = {
     })
   ).isRequired,
   onAddToTable: PropTypes.func.isRequired,
-  onChangeMessage: PropTypes.func.isRequired
+  onChangeMessage: PropTypes.func.isRequired,
+  onTest: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {
@@ -58,6 +60,9 @@ const mapDispatchToProps = (dispatch, props) => {
     },
     onChangeMessage: (message) => {
       dispatch(actMessage(message));
+    },
+    onTest: (subject) => {
+      dispatch(actTest(subject))
     }
   }
 }

@@ -6,3 +6,5 @@ export const WELCOME = 'WELCOME';
 export const ADD_SUBJECT = 'ADD SUBJECT';
 export const REMOVE_SUBJECT = 'REMOVE SUBJECT';
 export const UPDATE_SUBJECT = 'UPDATE SUBJECT';
+export const DELETE_BLOG = 'DELETE BLOG';
+export const TEST = 'TEST';
